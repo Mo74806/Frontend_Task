@@ -239,12 +239,21 @@ const PropertyForm = ({
                         $
                       </span>
                       <FormControl>
-                        <Input
+                        <input
+                          type="number"
+                          {...field}
+                          className="pl-8 bg-transparent outline-primary-green  foucs:ring-0 foucs:outline-[1px] border h-[40px] border-primary-green rounded-md  text-primary-green "
+                          placeholder="Enter price"
+                          onChange={(e) =>
+                            field.onChange(e.target.valueAsNumber || 0)
+                          }
+                        />
+                        {/* <Input
                           type="number"
                           {...field}
                           className="pl-8 bg-transparent border border-primary-green rounded-md text-primary-green focus:ring-primary-green focus:border-primary-green"
                           placeholder="Enter price"
-                        />
+                        /> */}
                       </FormControl>
                     </div>
                     <FormMessage />

@@ -13,7 +13,6 @@ const PropertyDetails = React.lazy(() => import("./pages/PropertyDetails"));
 function App() {
   const { login } = useLogin();
   const navigate = useNavigate();
-
   //protect Routes
   useEffect(() => {
     if (window.location.pathname !== "/login" && !login) {

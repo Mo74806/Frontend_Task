@@ -56,6 +56,7 @@ const Navbar = ({ loggedIn }: { loggedIn?: boolean }) => {
             src="KENNAH_LOGO.png"
             alt="Kennah Logo"
             invertColor={theme === "dark" ? true : false}
+            hideLoading={true}
           />
         </div>
         <ul className="flex flex-col gap-4 text-[18px] text-black dark:text-white font-medium">
@@ -113,6 +114,7 @@ const Navbar = ({ loggedIn }: { loggedIn?: boolean }) => {
             src="KENNAH_LOGO.png"
             alt="Kennah Logo"
             invertColor={theme === "dark" && true}
+            hideLoading={true}
           />
 
           <div className="flex items-center gap-2">
@@ -148,6 +150,7 @@ const Navbar = ({ loggedIn }: { loggedIn?: boolean }) => {
                     className={`max-w-[120px] ${theme === "dark" && "invert"}`}
                     src="KENNAH_LOGO.png"
                     alt="Kennah Logo"
+                    hideLoading={true}
                   />
                 </div>
                 <ul className="flex flex-col gap-4 text-[18px] text-black dark:text-white font-medium">

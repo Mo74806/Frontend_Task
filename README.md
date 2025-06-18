@@ -2,8 +2,6 @@
 
 A modern, responsive property management application built with React 19, TypeScript, and Tailwind CSS. This application provides a comprehensive solution for managing properties with features like CRUD operations, search, filtering, and pagination.
 
-![Kennah Property Management](public/KENNAH_LOGO.png)
-
 ## ✨ Features
 
 - 🔐 **Authentication System** - Secure login with role-based access
@@ -177,18 +175,10 @@ kennah-task/
 - The search functionality requires the exact title match
 - For production, consider using a proper backend with full-text search capabilities
 
-### Deployment Requirements
-
-**⚠️ Important:** When deploying this application, users must run the JSON Server locally because:
-
-1. **Mock API Dependency**: The application relies on the local JSON Server for data
-2. **No Production Backend**: This is a frontend-only application with mock data
-3. **Local Development**: The API endpoints are configured for localhost:4000
-
 **To use the deployed application:**
 
 1. Clone the repository
-2. Install dependencies: `npm install`
+2. Install dependencies: `npm install` || use the deployed version
 3. Start JSON Server: `json-server --watch server/db.json --port 4000`
 4. Access the deployed application
 
@@ -199,17 +189,6 @@ kennah-task/
 ```env
 VITE_API_BASE_URL=http://localhost:4000
 ```
-
-### JSON Server Configuration
-
-The mock API runs on port 4000 with the following endpoints:
-
-- `GET /properties` - Get all properties
-- `GET /properties/:id` - Get single property
-- `POST /properties` - Create property
-- `PATCH /properties/:id` - Update property
-- `DELETE /properties/:id` - Delete property
-- `GET /users` - User authentication
 
 ## 🎨 UI Components
 
@@ -241,29 +220,3 @@ The application is fully responsive with:
 - Mobile-first approach
 - Adaptive navigation (sidebar on desktop, hamburger menu on mobile)
 - Flexible grid layouts
-- Touch-friendly interactions
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support or questions:
-
-- Check the JSON Server documentation
-- Review the server README in the `server/` directory
-- Ensure all dependencies are properly installed
-- Verify the JSON Server is running on port 4000
-
----
-
-**Built with ❤️ using React 19, TypeScript, and Tailwind CSS**

@@ -26,7 +26,7 @@ const PropertyCard = ({ data }: { data: any }) => {
       onClick={() => {
         navigate(`/property/${data.id}`);
       }}
-      className="w-full max-w-sm bg-white dark:bg-primary-green-100 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+      className="cursor-pointer hover:scale-[105%] transition-all duration-300 w-full max-w-sm bg-white dark:bg-primary-green-100 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl "
     >
       {showErrorMessage && (
         <ErrorState
@@ -48,10 +48,7 @@ const PropertyCard = ({ data }: { data: any }) => {
       )}
       <div className="relative">
         <LazyImage
-          src={
-            // data.imageUrl ||
-            "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg"
-          }
+          src={data.imageUrl}
           alt={data.title}
           className="w-full h-56 object-cover"
         />
@@ -90,8 +87,12 @@ const PropertyCard = ({ data }: { data: any }) => {
           ${data.pricePerNight}{" "}
           <span className="text-sm font-normal">/ night</span>
         </p>
-        <button className="mt-2 w-full bg-primary-green text-white py-2 rounded-lg hover:bg-primary-green-200 hover:text-primary-green transition">
-          Available
+        <button
+          className={`mt-2 w-full ${
+            data.available ? "bg-primary-green" : "bg-red-500"
+          } text-white py-2 rounded-lg hover:bg-primary-green-200 hover:text-primary-green transition`}
+        >
+          {data.available ? "Available" : "Not Available"}
         </button>
       </div>
     </div>

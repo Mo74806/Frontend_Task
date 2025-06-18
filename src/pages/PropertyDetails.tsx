@@ -205,10 +205,7 @@ const PropertyDetails = () => {
           <div className="mb-8">
             <div className="relative rounded-xl overflow-hidden shadow-lg">
               <LazyImage
-                src={
-                  // data?.imageUrl ||
-                  "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg"
-                }
+                src={data?.imageUrl}
                 alt={data?.title}
                 className="w-full h-96 object-cover"
               />

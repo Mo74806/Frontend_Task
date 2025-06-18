@@ -44,7 +44,7 @@
       "type": "studio",
       "pricePerNight": 75,
       "location": "New York, USA",
-      "imageUrl": "https://source.unsplash.com/featured/?studio,city",
+      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
       "available": true
     },
     {
@@ -54,7 +54,7 @@
       "type": "apartment",
       "pricePerNight": 120,
       "location": "Zermatt, Switzerland",
-      "imageUrl": "https://source.unsplash.com/featured/?apartment,mountain",
+      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
       "available": true
     },
     {
@@ -64,7 +64,7 @@
       "type": "studio",
       "pricePerNight": 75,
       "location": "New York, USA",
-      "imageUrl": "https://source.unsplash.com/featured/?studio,city",
+      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
       "available": true
     },
     {
@@ -74,7 +74,7 @@
       "type": "apartment",
       "pricePerNight": 120,
       "location": "Zermatt, Switzerland",
-      "imageUrl": "https://source.unsplash.com/featured/?apartment,mountain",
+      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
       "available": false
     },
     {
@@ -84,7 +84,7 @@
       "type": "apartment",
       "pricePerNight": 1,
       "location": "sfdlkjkfdsjsfdjkfdsjk",
-      "imageUrl": "https://source.unsplash.com/featured/?studio,city",
+      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
       "available": false
     }
   ],

@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import { PaginationComponent } from "@/components/Pagination";
 import { Skeleton } from "@/components/ui/skeleton";
 import ErrorState from "@/components/ErrorState";
-
 const Home = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -49,7 +48,6 @@ const Home = () => {
 
   return (
     <div className="w-[100%]">
-      <title>Home</title>
       {showErrorMessage && (
         <ErrorState
           title="Something went wrong"
@@ -65,9 +63,8 @@ const Home = () => {
           handleSearch={(type: string) => {
             setType(type as "All" | "Villa" | "House" | "Apartment" | "Studio");
           }}
-          options={["All", "Villa", "House", "Apartment", "Studio"]}
+          options={["Villa", "House", "Apartment", "Studio"]}
           text="Type"
-          selected={type}
         />
       </div>
 
@@ -78,18 +75,13 @@ const Home = () => {
               <Skeleton key={item} className="h-[400px] w-[300px]  " />
             ))}
           </div>
-        ) : data && data.length > 0 ? (
+        ) : (
+          data &&
           data.map((item: any) => (
             <div key={item.id} className="  mb-6 ">
               <PropertyCard data={item} />
             </div>
           ))
-        ) : (
-          <div className="flex justify-center text-2xl text-center pt-[50px]">
-            <p className="font-bold dark:text-white text-primary-green">
-              There is No Property Found
-            </p>
-          </div>
         )}
         <PaginationComponent
           currentPage={page}

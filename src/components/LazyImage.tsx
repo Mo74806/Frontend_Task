@@ -6,6 +6,7 @@ interface LazyImageProps {
   className?: string;
   fallbackSrc?: string;
   invertColor?: boolean;
+  hideLoading?: boolean;
 }
 
 const LazyImage = ({
@@ -14,6 +15,7 @@ const LazyImage = ({
   className = "",
   fallbackSrc,
   invertColor,
+  hideLoading,
 }: LazyImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -67,7 +69,7 @@ const LazyImage = ({
         </div>
       )}
 
-      {hasError && !fallbackSrc && (
+      {!hideLoading && hasError && !fallbackSrc && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700">
           <div className="text-center text-gray-500 dark:text-gray-400">
             <div className="w-12 h-12 mx-auto mb-2 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center">
