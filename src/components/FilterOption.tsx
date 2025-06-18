@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  handleSearch: (value: string) => void; // Function prop to handle search
+  handleSearch: (value: string) => void;
   options: string[];
   text: string;
   selected?: string;
@@ -25,16 +25,14 @@ interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
   ({ handleSearch, options, text, selected }, ref) => {
     const [query, setQuery] = useState<string>("");
-    // const [debouncedValue] = useDebounce(query, 1000); //debounce value to avoid too many requests
     useImperativeHandle(ref, () => searchInputRef.current!);
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
       const handleKeyDown = (event: KeyboardEvent) => {
         if (event.ctrlKey && event.key.toLowerCase() === "k") {
-          event.preventDefault(); // Prevent browser's default search behavior
+          event.preventDefault();
 
-          // Delay execution slightly to ensure smooth scrolling across pages
           setTimeout(() => {
             if (searchInputRef.current) {
               searchInputRef.current.scrollIntoView({
@@ -54,10 +52,6 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         document.removeEventListener("keydown", handleKeyDown);
       };
     }, []);
-
-    // useEffect(() => {
-    //   handleSearch(debouncedValue);
-    // }, [debouncedValue]);
 
     useEffect(() => {}, [query]);
     return (

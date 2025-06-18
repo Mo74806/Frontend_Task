@@ -10,23 +10,24 @@ import ErrorState from "@/components/ErrorState";
 const Home = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [seacValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [type, setType] = useState<
     "All" | "Villa" | "House" | "Apartment" | "Studio"
   >("All");
   const { isLoading, isFetching, data } = useQuery({
-    queryKey: ["propertyData", page, seacValue, type],
+    queryKey: ["propertyData", page, searchValue, type],
     queryFn: async () => {
       try {
         const response = await propertyService.getAll(
           page,
           4,
           type === "All" ? "" : type.toLocaleLowerCase(),
-          seacValue
+          searchValue
         );
         setTotalPages(response.totalPages);
+
         if (response?.message) {
           setErrorMessage("Something Went Wrong");
           setShowErrorMessage(true);
@@ -58,17 +59,24 @@ const Home = () => {
         />
       )}
       <div className="flex md:flex-row gap-y-2     flex-col gap-x-2 justify-center">
-        <SearchBar handleSearch={(value) => setSearchValue(value)} />
+        <SearchBar
+          handleSearch={(value) => {
+            setPage(1);
+            setSearchValue(value);
+          }}
+        />
         <FilterOption
           handleSearch={(type: string) => {
+            setPage(1);
             setType(type as "All" | "Villa" | "House" | "Apartment" | "Studio");
           }}
-          options={["Villa", "House", "Apartment", "Studio"]}
+          options={["All", "Villa", "House", "Apartment", "Studio"]}
           text="Type"
+          selected={type}
         />
       </div>
 
-      <div className="flex flex-wrap gap-3  mx-[20px] lg:mx-[50px] xl:mx-[100px] justify-center  mt-[24px] ">
+      <div className="flex flex-wrap gap-3  mx-[0px] lg:mx-[50px] xl:mx-[100px] justify-center  mt-[24px] ">
         {isFetching || isLoading ? (
           <div className="flex flex-wrap items-center justify-center  gap-2  w-[100%]">
             {[0, 1, 2, 3].map((item) => (

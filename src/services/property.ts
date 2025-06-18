@@ -22,18 +22,16 @@ async function getAll(
       _limit: size,
     };
     if (type) pagedParams.type = type;
-    if (search) pagedParams.title_like = type;
+    if (search) pagedParams.title = search;
 
-    const allParams: any = {}; // for full total
-    // Optional: filter applied to fullTotal as well if you want total of filtered only
+    const allParams: any = {};
     if (type) allParams.type = type;
+    if (search) allParams.title = search;
 
-    // ✅ Run both requests in parallel
     const [pagedResponse, allResponse] = await Promise.all([
       axios.get(baseUrl, { params: pagedParams }),
       axios.get(baseUrl, { params: allParams }),
     ]);
-    console.log(allResponse);
     const fullTotal = allResponse.data.length;
 
     return {

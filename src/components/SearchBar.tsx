@@ -8,7 +8,7 @@ import {
 } from "react";
 
 interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  handleSearch: (value: string) => void; // Function prop to handle search
+  handleSearch: (value: string) => void;
 }
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
@@ -20,8 +20,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
     useEffect(() => {
       const handleKeyDown = (event: KeyboardEvent) => {
         if (event.ctrlKey && event.key.toLowerCase() === "k") {
-          event.preventDefault(); // Prevent browser's default search behavior
-          // Delay execution slightly to ensure smooth scrolling across pages
+          event.preventDefault();
           setTimeout(() => {
             if (searchInputRef.current) {
               searchInputRef.current.scrollIntoView({
@@ -52,7 +51,6 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
     }, [query]);
     return (
       <div className="relative bg-primary-green-100  dark:bg-primary-green dark:backdrop-blur-xl dark:shadow-lg dark:border dark:border-white/20  card-shadow backdrop-blur-lg border border-transparent rounded-2xl p-4 w-[100%] lg:w-[50%] text-black text-center transition-all">
-        {/* Search Input */}
         <div className="flex  items-center gap-2 border border-gray-300 rounded-lg px-4 py-2  focus-within:border-primary-green transition-all">
           <Search className="text-primary-green dark:text-white transition-all" />
           <input

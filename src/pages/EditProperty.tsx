@@ -6,7 +6,6 @@ const EditProperty = () => {
   return (
     <div className="flex flex-col  w-[100%]">
       <title>Edit Property</title>
-      {/* Main Content */}
       <PropertyForm type="Edit" propertyId={propertyId} />
     </div>
   );

@@ -21,7 +21,6 @@ export function PaginationComponent({
   onChange,
   maxVisiblePages = 6,
 }: PaginationComponentProps) {
-  // Don't render pagination if there's only one page or no pages
   if (totalPages <= 1) {
     return null;
   }
@@ -30,16 +29,13 @@ export function PaginationComponent({
     const pages: (number | string)[] = [];
 
     if (totalPages <= maxVisiblePages) {
-      // If total pages is less than or equal to max visible, show all pages
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      // Always include first page
       pages.push(1);
 
       if (currentPage <= 3) {
-        // Current page is near the beginning
         for (let i = 2; i <= Math.min(4, totalPages - 1); i++) {
           pages.push(i);
         }
@@ -50,7 +46,6 @@ export function PaginationComponent({
           pages.push(totalPages);
         }
       } else if (currentPage >= totalPages - 2) {
-        // Current page is near the end
         if (totalPages > 4) {
           pages.push("ellipsis");
         }
@@ -59,7 +54,6 @@ export function PaginationComponent({
         }
         pages.push(totalPages);
       } else {
-        // Current page is in the middle
         pages.push("ellipsis");
         for (let i = currentPage - 1; i <= currentPage + 1; i++) {
           pages.push(i);
@@ -95,7 +89,6 @@ export function PaginationComponent({
   return (
     <Pagination className="mt-8">
       <PaginationContent>
-        {/* Previous button */}
         <PaginationItem>
           <PaginationPrevious
             href="#"
@@ -110,8 +103,6 @@ export function PaginationComponent({
             }
           />
         </PaginationItem>
-
-        {/* Page numbers */}
         {pageNumbers.map((page, index) => (
           <PaginationItem key={index}>
             {page === "ellipsis" ? (
@@ -131,8 +122,6 @@ export function PaginationComponent({
             )}
           </PaginationItem>
         ))}
-
-        {/* Next button */}
         <PaginationItem>
           <PaginationNext
             href="#"

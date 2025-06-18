@@ -10,9 +10,8 @@ const LoginContext = createContext<LoginContextType | undefined>(undefined);
 
 export function LoginProvider({ children }: { children: React.ReactNode }) {
   const [login, setLogin] = useState<boolean>(() => {
-    // ✅ Get initial login value from localStorage
     const storedLogin = localStorage.getItem("login");
-    return storedLogin === "true"; // returns true/false
+    return storedLogin === "true";
   });
 
   useEffect(() => {

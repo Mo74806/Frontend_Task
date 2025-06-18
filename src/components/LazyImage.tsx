@@ -63,7 +63,7 @@ const LazyImage = ({
 
   return (
     <div className={`relative ${className}`}>
-      {isLoading && (
+      {!hideLoading && isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700 animate-pulse">
           <div className="w-8 h-8 border-4 border-primary-green border-t-transparent rounded-full animate-spin"></div>
         </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import { CheckCircle2 } from "lucide-react";
-// import { Overlay } from "@radix-ui/react-dialog";
 import ReactDOM from "react-dom";
 
 interface SuccessStateProps {

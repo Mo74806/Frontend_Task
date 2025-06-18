@@ -110,7 +110,6 @@ const PropertyForm = ({
         response.status === 200 ||
         response.status === 203
       ) {
-        // Handle successful creation
         setShowConfirmation(true);
         setTimeout(() => {
           setShowConfirmation(false);
@@ -159,7 +158,6 @@ const PropertyForm = ({
         </h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            {/* Title */}
             <FormField
               control={form.control}
               name="title"
@@ -178,7 +176,6 @@ const PropertyForm = ({
               )}
             />
 
-            {/* Description as Textarea */}
             <FormField
               control={form.control}
               name="description"
@@ -190,7 +187,6 @@ const PropertyForm = ({
                   <FormControl>
                     <Input
                       {...field}
-                      // rows={4}
                       className="w-full bg-transparent border   border-primary-green focus:outline-gray-500 rounded-md p-2 text-primary-green focus:ring-primary-green focus:border-primary-green"
                       placeholder="Enter property description"
                     />
@@ -200,9 +196,7 @@ const PropertyForm = ({
               )}
             />
 
-            {/* Type and Price */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-              {/* Type */}
               <FormField
                 control={form.control}
                 name="type"
@@ -225,7 +219,6 @@ const PropertyForm = ({
                 )}
               />
 
-              {/* Price */}
               <FormField
                 control={form.control}
                 name="pricePerNight"
@@ -248,12 +241,6 @@ const PropertyForm = ({
                             field.onChange(e.target.valueAsNumber || 0)
                           }
                         />
-                        {/* <Input
-                          type="number"
-                          {...field}
-                          className="pl-8 bg-transparent border border-primary-green rounded-md text-primary-green focus:ring-primary-green focus:border-primary-green"
-                          placeholder="Enter price"
-                        /> */}
                       </FormControl>
                     </div>
                     <FormMessage />
@@ -262,7 +249,6 @@ const PropertyForm = ({
               />
             </div>
 
-            {/* Location */}
             <FormField
               control={form.control}
               name="location"
@@ -281,7 +267,6 @@ const PropertyForm = ({
               )}
             />
 
-            {/* Image URL */}
             <FormField
               control={form.control}
               name="imageUrl"
@@ -302,7 +287,6 @@ const PropertyForm = ({
               )}
             />
 
-            {/* Available */}
             <FormField
               control={form.control}
               name="available"
@@ -335,11 +319,9 @@ const PropertyForm = ({
               )}
             />
 
-            {/* Submit Button */}
-
             <Button
               type="submit"
-              className="w-full bg-primary-green hover:bg-primary-green-200 text-white rounded-md py-2"
+              className="cursor-pointer w-full bg-primary-green hover:bg-primary-green-200 text-white rounded-md py-2"
             >
               {submitting ? (
                 <div className="flex items-center justify-center w-full h-full">

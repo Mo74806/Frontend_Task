@@ -44,7 +44,7 @@
       "type": "studio",
       "pricePerNight": 75,
       "location": "New York, USA",
-      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_MxVj5DNHsVxAy0V-nkEoKss0dxCHdCiYTvKukwfgTZbbz5X89r3zqh7Joq4e61dtyt0&usqp=CAU",
       "available": true
     },
     {
@@ -54,7 +54,7 @@
       "type": "apartment",
       "pricePerNight": 120,
       "location": "Zermatt, Switzerland",
-      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_MxVj5DNHsVxAy0V-nkEoKss0dxCHdCiYTvKukwfgTZbbz5X89r3zqh7Joq4e61dtyt0&usqp=CAU",
       "available": true
     },
     {
@@ -64,7 +64,7 @@
       "type": "studio",
       "pricePerNight": 75,
       "location": "New York, USA",
-      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_MxVj5DNHsVxAy0V-nkEoKss0dxCHdCiYTvKukwfgTZbbz5X89r3zqh7Joq4e61dtyt0&usqp=CAU",
       "available": true
     },
     {
@@ -74,7 +74,7 @@
       "type": "apartment",
       "pricePerNight": 120,
       "location": "Zermatt, Switzerland",
-      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_MxVj5DNHsVxAy0V-nkEoKss0dxCHdCiYTvKukwfgTZbbz5X89r3zqh7Joq4e61dtyt0&usqp=CAU",
       "available": false
     },
     {
@@ -84,7 +84,7 @@
       "type": "apartment",
       "pricePerNight": 1,
       "location": "sfdlkjkfdsjsfdjkfdsjk",
-      "imageUrl": "https://dsvgjymmlgbkpexngmjh.supabase.co/storage/v1/object/public/images/VR%201.jpg",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_MxVj5DNHsVxAy0V-nkEoKss0dxCHdCiYTvKukwfgTZbbz5X89r3zqh7Joq4e61dtyt0&usqp=CAU",
       "available": false
     }
   ],

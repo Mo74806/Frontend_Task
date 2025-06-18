@@ -44,7 +44,6 @@ const Navbar = ({ loggedIn }: { loggedIn?: boolean }) => {
 
   return (
     <>
-      {/* Sidebar on Desktop */}
       <aside
         className={` ${
           loggedIn ? "hidden md:flex" : "hidden"
@@ -100,7 +99,6 @@ const Navbar = ({ loggedIn }: { loggedIn?: boolean }) => {
         </div>
       </aside>
 
-      {/* Navbar with Hamburger on Mobile */}
       <nav
         className={`
         ${loggedIn ? "md:hidden" : "fixed"}
