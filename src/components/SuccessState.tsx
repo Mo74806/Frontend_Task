@@ -35,15 +35,25 @@ const SuccessState: React.FC<SuccessStateProps> = ({
         }}
         className="absolute z-10 flex  flex-col items-center justify-center p-6 rounded-xl bg-green-50 text-green-800 text-center shadow-md"
       >
-        <CheckCircle2 size={48} className="text-primary-green mb-4" />
+        {!actionLabel && (
+          <CheckCircle2 size={48} className="text-primary-green mb-4" />
+        )}{" "}
         <h2 className="text-2xl font-semibold">{title}</h2>
         <p className="text-gray-600 mt-2">{description}</p>
         {onAction && (
           <button
             onClick={onAction}
-            className="mt-4 px-4 py-2 rounded-lg bg-primary-green text-white hover:bg-primary-green-200 transition"
+            className=" cursor-pointer mt-4 px-4 py-2 rounded-lg bg-primary-green text-white hover:text-primary-green hover:bg-primary-green-200 transition"
           >
             {actionLabel}
+          </button>
+        )}
+        {onAction && (
+          <button
+            onClick={() => onClose?.()}
+            className=" cursor-pointer mt-4 px-4 py-2 rounded-lg bg-transparent text-primary-green hover:bg-primary-green hover:text-white border-primary-green border transition"
+          >
+            Cancel
           </button>
         )}
       </div>

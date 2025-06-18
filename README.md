@@ -1,54 +1,269 @@
-# React + TypeScript + Vite
+# 🏨 Kennah Property Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive property management application built with React 19, TypeScript, and Tailwind CSS. This application provides a comprehensive solution for managing properties with features like CRUD operations, search, filtering, and pagination.
 
-Currently, two official plugins are available:
+![Kennah Property Management](public/KENNAH_LOGO.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔐 **Authentication System** - Secure login with role-based access
+- 🏠 **Property Management** - Create, read, update, and delete properties
+- 🔍 **Advanced Search** - Search properties by title
+- 🏷️ **Filtering** - Filter properties by type (Villa, House, Apartment, Studio)
+- 📄 **Pagination** - Efficient data pagination for better performance
+- 🌙 **Dark Mode** - Toggle between light and dark themes
+- 📱 **Responsive Design** - Mobile-first approach with responsive layout
+- 🖼️ **Lazy Loading** - Optimized image loading with error handling
+- ⚡ **React 19** - Latest React features with lazy loading and Suspense
+- 🎨 **Modern UI** - Beautiful interface using Tailwind CSS and shadcn/ui
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Quick Start
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+- JSON Server (for mock API)
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd kennah-task
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   Create a `.env` file in the root directory:
+
+   ```env
+   VITE_API_BASE_URL=http://localhost:4000
+   ```
+
+4. **Start the JSON Server (Required)**
+
+   ```bash
+   # Install json-server globally if not already installed
+   npm install -g json-server
+
+   # Start the mock API server
+   json-server --watch server/db.json --port 4000
+   ```
+
+5. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+6. **Open your browser**
+   Navigate to `http://localhost:5173`
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## 📁 Project Structure
+
+```
+kennah-task/
+├── public/                 # Static assets
+│   ├── KENNAH_LOGO.png    # Application logo
+│   └── vite.svg           # Vite logo
+├── server/                # Mock API server
+│   ├── db.json           # JSON database
+│   └── README.md         # Server documentation
+├── src/
+│   ├── components/       # Reusable components
+│   │   ├── ui/          # shadcn/ui components
+│   │   ├── LazyImage.tsx # Lazy loading image component
+│   │   ├── Navbar.tsx   # Navigation component
+│   │   ├── PropertyCard.tsx # Property display card
+│   │   ├── PropertyForm.tsx # Property form component
+│   │   ├── SearchBar.tsx # Search functionality
+│   │   ├── FilterOption.tsx # Filter dropdown
+│   │   └── Pagination.tsx # Pagination component
+│   ├── context/         # React Context providers
+│   │   ├── LoginContext.tsx # Authentication context
+│   │   └── ThemeContext.tsx # Theme management
+│   ├── pages/           # Page components
+│   │   ├── Home.tsx     # Main dashboard
+│   │   ├── Login.tsx    # Authentication page
+│   │   ├── CreateProperty.tsx # Property creation
+│   │   ├── EditProperty.tsx # Property editing
+│   │   └── PropertyDetails.tsx # Property details view
+│   ├── services/        # API services
+│   │   ├── auth.ts      # Authentication service
+│   │   └── property.ts  # Property management service
+│   ├── lib/             # Utility functions
+│   ├── App.tsx          # Main application component
+│   └── main.tsx         # Application entry point
+├── index.html           # HTML template
+├── package.json         # Dependencies and scripts
+├── tsconfig.json        # TypeScript configuration
+├── vite.config.ts       # Vite configuration
+└── tailwind.config.js   # Tailwind CSS configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🏗️ Architecture Overview
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Frontend Stack
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- **React 19** - Latest React with concurrent features
+- **TypeScript** - Type-safe development
+- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Modern component library
+- **React Router** - Client-side routing
+- **React Query** - Server state management
+- **React Hook Form** - Form handling with validation
+- **Zod** - Schema validation
+
+### Key Features Implementation
+
+#### 🔐 Authentication
+
+- Context-based authentication state management
+- Local storage persistence
+- Protected routes with automatic redirection
+
+#### 🏠 Property Management
+
+- CRUD operations for properties
+- Form validation using Zod schemas
+- Optimistic updates with React Query
+
+#### 🔍 Search & Filtering
+
+- Real-time search by property title
+- Type-based filtering (Villa, House, Apartment, Studio)
+- Combined search and filter functionality
+
+#### 📄 Pagination
+
+- Server-side pagination implementation
+- Dynamic page size configuration
+- Total count calculation for accurate pagination
+
+#### 🌙 Theme System
+
+- Dark/Light mode toggle
+- CSS custom properties for theming
+- Persistent theme preference
+
+## ⚠️ Important Notes
+
+### JSON Server Limitations
+
+**Pagination Issue:**
+
+- The pagination logic is correctly implemented in the frontend
+- However, JSON Server always returns the first items regardless of the page parameter
+- This is a known limitation of JSON Server's pagination implementation
+
+**Search Limitation:**
+
+- JSON Server doesn't support partial text search by default
+- The search functionality requires the exact title match
+- For production, consider using a proper backend with full-text search capabilities
+
+### Deployment Requirements
+
+**⚠️ Important:** When deploying this application, users must run the JSON Server locally because:
+
+1. **Mock API Dependency**: The application relies on the local JSON Server for data
+2. **No Production Backend**: This is a frontend-only application with mock data
+3. **Local Development**: The API endpoints are configured for localhost:4000
+
+**To use the deployed application:**
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start JSON Server: `json-server --watch server/db.json --port 4000`
+4. Access the deployed application
+
+## 🔧 Configuration
+
+### Environment Variables
+
+```env
+VITE_API_BASE_URL=http://localhost:4000
 ```
+
+### JSON Server Configuration
+
+The mock API runs on port 4000 with the following endpoints:
+
+- `GET /properties` - Get all properties
+- `GET /properties/:id` - Get single property
+- `POST /properties` - Create property
+- `PATCH /properties/:id` - Update property
+- `DELETE /properties/:id` - Delete property
+- `GET /users` - User authentication
+
+## 🎨 UI Components
+
+The application uses a custom design system built with:
+
+- **Tailwind CSS** for styling
+- **shadcn/ui** for base components
+- **Lucide React** for icons
+- **Custom color scheme** with primary green theme
+
+## 🚀 Performance Optimizations
+
+- **Lazy Loading** - Components and images load on demand
+- **React Suspense** - Smooth loading states
+- **Image Optimization** - Lazy image loading with error handling
+- **Code Splitting** - Route-based code splitting
+- **React Query** - Efficient caching and background updates
+
+## 🔒 Security Features
+
+- **Form Validation** - Client-side validation with Zod
+- **Protected Routes** - Authentication-based route protection
+- **Input Sanitization** - Proper input handling and validation
+
+## 📱 Responsive Design
+
+The application is fully responsive with:
+
+- Mobile-first approach
+- Adaptive navigation (sidebar on desktop, hamburger menu on mobile)
+- Flexible grid layouts
+- Touch-friendly interactions
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support or questions:
+
+- Check the JSON Server documentation
+- Review the server README in the `server/` directory
+- Ensure all dependencies are properly installed
+- Verify the JSON Server is running on port 4000
+
+---
+
+**Built with ❤️ using React 19, TypeScript, and Tailwind CSS**

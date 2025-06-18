@@ -1,18 +1,10 @@
-import {
-  ArrowDown,
-  LucideAArrowDown,
-  LucideArrowDownNarrowWide,
-  LucideMoveDown,
-  MoveDownIcon,
-  Search,
-} from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import {
   useState,
   forwardRef,
   useEffect,
   useRef,
   useImperativeHandle,
-  memo,
 } from "react";
 import {
   DropdownMenu,
@@ -22,17 +14,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { text } from "stream/consumers";
-// import { useDebounce } from "use-debounce";
 
 interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputElement> {
   handleSearch: (value: string) => void; // Function prop to handle search
   options: string[];
   text: string;
+  selected?: string;
 }
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
-  ({ handleSearch, options, text }, ref) => {
+  ({ handleSearch, options, text, selected }, ref) => {
     const [query, setQuery] = useState<string>("");
     // const [debouncedValue] = useDebounce(query, 1000); //debounce value to avoid too many requests
     useImperativeHandle(ref, () => searchInputRef.current!);
@@ -86,9 +77,13 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
               <DropdownMenuItem
                 key={item}
                 onClick={() => {
-                  handleSearch(item.toLocaleLowerCase());
+                  setQuery(item);
+                  handleSearch(item);
                 }}
-                className="dark:text-white justify-center !bg-primary-green-200 cursor-pointer font-semibold text-black transition-all duration-300"
+                className={`dark:text-white justify-center ${
+                  item === selected &&
+                  "!bg-primary-green !text-primary-green-100 dark:!bg-primary-green-100 dark:!text-primary-green"
+                } cursor-pointer font-semibold text-black transition-all duration-300`}
               >
                 {item}
               </DropdownMenuItem>
@@ -100,4 +95,4 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
   }
 );
 
-export default memo(SearchBar);
+export default SearchBar;

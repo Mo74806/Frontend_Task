@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +16,7 @@ import { propertyService } from "@/services/property";
 import { useNavigate } from "react-router-dom";
 import SuccessState from "./SuccessState";
 import { useQuery } from "@tanstack/react-query";
+import ErrorState from "./ErrorState";
 
 const PropertyForm = ({
   type,
@@ -26,7 +27,10 @@ const PropertyForm = ({
 }) => {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
+  const [submitting, setSubmitting] = useState(false);
   const propertyFormSchema = z.object({
     title: z.string().min(1, "Title is required"),
     description: z.string().min(1, "Description is required"),
@@ -57,44 +61,99 @@ const PropertyForm = ({
   useQuery({
     queryKey: ["singlePropertyData"],
     queryFn: async () => {
-      let response = await propertyService.getsingle(propertyId!);
-      if (response.status === 200) {
-        form.reset(response.data);
+      try {
+        if (propertyId) {
+          let response = await propertyService.getsingle(propertyId!);
+          if (response?.message) {
+            setErrorMessage("Something Went Wrong");
+            setShowErrorMessage(true);
+            setTimeout(() => {
+              setShowErrorMessage(false);
+            }, 2000);
+          } else if (response.status === 200) {
+            form.reset(response.data);
+          } else {
+            setErrorMessage("Something Went Wrong");
+            setShowErrorMessage(true);
+            setTimeout(() => {
+              setShowErrorMessage(false);
+            }, 2000);
+          }
+        }
+      } catch (e) {
+        setErrorMessage("Something Went Wrong");
+        setShowErrorMessage(true);
+        setTimeout(() => {
+          setShowErrorMessage(false);
+        }, 2000);
       }
-      console.log(response);
-      console.log(response.headers.get("x-total-count"));
     },
     refetchOnWindowFocus: false,
   });
   async function onSubmit(values: z.infer<typeof propertyFormSchema>) {
-    const response =
-      type === "Create"
-        ? await propertyService.create(values)
-        : await propertyService.updateProperty(propertyId!, values);
-    console.log(response);
-    if (
-      response.status === 201 ||
-      response.status === 200 ||
-      response.status === 203
-    ) {
-      // Handle successful creation
-      setShowConfirmation(true);
+    setSubmitting(true);
+    try {
+      const response =
+        type === "Create"
+          ? await propertyService.create(values)
+          : await propertyService.updateProperty(propertyId!, values);
+      if (response?.message) {
+        setErrorMessage(
+          `${type === "Create" ? "Creation Failed" : "Update failed"}`
+        );
+        setShowErrorMessage(true);
+        setTimeout(() => {
+          setShowErrorMessage(false);
+        }, 2000);
+      } else if (
+        response.status === 201 ||
+        response.status === 200 ||
+        response.status === 203
+      ) {
+        // Handle successful creation
+        setShowConfirmation(true);
+        setTimeout(() => {
+          setShowConfirmation(false);
+          navigate(`/property/${response.data.id}`);
+        }, 2000);
+      } else {
+        setErrorMessage(
+          `${type === "Create" ? "Creation Failed" : "Update failed"}`
+        );
+        setShowErrorMessage(true);
+        setTimeout(() => {
+          setShowErrorMessage(false);
+        }, 2000);
+      }
+    } catch (e: any) {
+      setErrorMessage(e.errorMessage);
+      setShowErrorMessage(true);
       setTimeout(() => {
-        setShowConfirmation(false);
-        navigate("/");
+        setShowErrorMessage(false);
       }, 2000);
+    } finally {
+      setSubmitting(false);
     }
   }
 
   return (
-    <>
+    <div className=" h-[100%] items-center flex">
       {showConfirmation && (
         <SuccessState
           description={`Your property has been ${type}ed successfully.`}
           onClose={() => setShowConfirmation(false)}
         />
       )}
-      <div className="max-w-lg mx-auto p-6 bg-white dark:bg-primary-green-100 rounded-2xl border border-primary-green">
+      {showErrorMessage && (
+        <ErrorState
+          title="Something went wrong"
+          description={
+            errorMessage || "An error occurred while processing your request."
+          }
+          onClose={() => setShowErrorMessage(false)}
+        />
+      )}
+      <div className="max-w-lg mx-auto p-6 align-self-center  bg-white dark:bg-primary-green-100 rounded-2xl border border-primary-green">
         <h2 className="text-2xl font-bold text-primary-green mb-6">
           {type} Property
         </h2>
@@ -268,16 +327,23 @@ const PropertyForm = ({
             />
 
             {/* Submit Button */}
+
             <Button
               type="submit"
               className="w-full bg-primary-green hover:bg-primary-green-200 text-white rounded-md py-2"
             >
-              {type} Property
+              {submitting ? (
+                <div className="flex items-center justify-center w-full h-full">
+                  <div className="h-5 w-5 animate-spin rounded-full border-1 border-white border-t-transparent"></div>
+                </div>
+              ) : (
+                `${type} Property`
+              )}
             </Button>
           </form>
         </Form>
       </div>
-    </>
+    </div>
   );
 };
 

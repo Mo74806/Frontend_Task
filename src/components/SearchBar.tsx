@@ -5,9 +5,7 @@ import {
   useEffect,
   useRef,
   useImperativeHandle,
-  memo,
 } from "react";
-// import { useDebounce } from "use-debounce";
 
 interface SearchBarProps extends React.InputHTMLAttributes<HTMLInputElement> {
   handleSearch: (value: string) => void; // Function prop to handle search
@@ -81,4 +79,4 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
   }
 );
 
-export default memo(SearchBar);
+export default SearchBar;

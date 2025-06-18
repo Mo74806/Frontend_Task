@@ -103,10 +103,11 @@ async function updateProperty(
     return e;
   }
 }
+
 async function deleteProperty(propertyID: string): Promise<any> {
   try {
     var config = {
-      method: "patch",
+      method: "delete",
       maxBodyLength: Infinity,
       url: `${import.meta.env.VITE_API_BASE_URL}/properties/${propertyID}`,
       headers: {
