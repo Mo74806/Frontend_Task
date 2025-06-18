@@ -1,14 +1,5 @@
-import {
-  CrossIcon,
-  DeleteIcon,
-  Edit,
-  Edit2,
-  Edit2Icon,
-  Edit3,
-  LucideDelete,
-  XIcon,
-} from "lucide-react";
-import React, { useState } from "react";
+import { Edit2Icon, XIcon } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LazyImage from "./LazyImage";
 import { propertyService } from "@/services/property";

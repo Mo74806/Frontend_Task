@@ -22,9 +22,7 @@ const SuccessState: React.FC<SuccessStateProps> = ({
 
   return ReactDOM.createPortal(
     <div
-      onClick={(e: any) => {
-        // e.preventDefault();
-        console.log("wwwwwwwww");
+      onClick={() => {
         onClose?.();
       }}
       className="!w-[100%] absolute flex bg-black/60 backdrop-blur-sm justify-center items-center !h-[100%] z-100"
