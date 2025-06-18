@@ -161,9 +161,9 @@ const PropertyDetails = () => {
         </div>
       ) : (
         <div className="w-full max-w-[100wh] mx-auto">
-          <div className="flex justify-between md:flex-row flex-col items-end mb-8">
-            <div>
-              <h1 className="text-3xl break-words break-all  font-bold text-gray-900 dark:text-white mb-2">
+          <div className="flex justify-between   md:flex-row flex-col  mb-8">
+            <div className=" text-start">
+              <h1 className="text-3xl break-words  break-all  text-start font-bold text-gray-900 dark:text-white mb-2">
                 {data?.title}
               </h1>
               <div className="flex items-center break-words break-all gap-2 text-gray-600 dark:text-gray-300">
@@ -171,7 +171,7 @@ const PropertyDetails = () => {
                 <span>{data?.location}</span>
               </div>
             </div>
-            <div className="text-end flex gap-x-2 md:mt-0 mt-4">
+            <div className="text-end flex gap-x-2 md:mt-0 mt-4 ms-auto">
               <Button
                 onClick={handleEdit}
                 className="bg-primary-green cursor-pointer dark:bg-primary-green-100 dark:text-primary-green hover:bg-primary-green-700 text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-colors"
@@ -222,7 +222,7 @@ const PropertyDetails = () => {
               <div className="bg-white dark:bg-primary-green-200 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center gap-2 mb-4">
                   <DollarSign className="h-5 w-5 text-primary-green-600" />
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-lg  font-semibold text-gray-900 dark:text-white">
                     Price per Night
                   </h3>
                 </div>

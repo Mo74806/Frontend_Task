@@ -64,13 +64,6 @@ A modern, responsive property management application built with React 19, TypeSc
 6. **Open your browser**
    Navigate to `http://localhost:5173`
 
-## 🔧 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
 ## 📁 Project Structure
 
 ```
@@ -178,7 +171,7 @@ kennah-task/
 **To use the deployed application:**
 
 1. Clone the repository
-2. Install dependencies: `npm install` || use the deployed version
+2. Install dependencies: `npm install` then run the project `npm run dev` || use the deployed version `https://frontend-task-bdws.vercel.app/`
 3. Start JSON Server: `json-server --watch server/db.json --port 4000`
 4. Access the deployed application
 
