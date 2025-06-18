@@ -9,15 +9,15 @@ import { LoginProvider } from "./context/LoginContext.tsx";
 
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <LoginProvider>
-          <ThemeProvider>
-            <App />
-          </ThemeProvider>
-        </LoginProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
-  </StrictMode>
+  // <StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <LoginProvider>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </LoginProvider>
+    </BrowserRouter>
+  </QueryClientProvider>
+  // </StrictMode>
 );
